@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Galaxy | Official Tango Live Agency</title>
-    <!-- Fonts & Icons -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,45 +19,241 @@
         <div class="logo">TEAM GALAXY</div>
         <div class="nav-links">
             <a href="#perks">Perks</a>
+            <a href="#about">About</a>
             <a href="#hall-of-fame">Earnings</a>
             <a href="#how-it-works">Process</a>
+            <a href="#faq">FAQ</a>
             <a href="#register" class="btn-nav">Join Now</a>
         </div>
     </nav>
 
     <header class="hero">
         <div class="hero-content">
-            <div class="tagline">OFFICIAL TANGO PARTNER</div>
+            <div class="tagline" style="color: var(--accent); font-weight: 600; margin-bottom: 1rem; letter-spacing: 2px;">OFFICIAL TANGO PARTNER</div>
             <h1>Empowering Creators to <br><span class="gradient-text">Reach the Stars</span></h1>
             <p>India's most trusted agency. Built on Trust, Respect, and Professionalism.</p>
             <div class="hero-btns">
                 <a href="#register" class="cta-btn">Join Us</a>
-                <a href="https://wa.me/919455265412" class="secondary-btn"><i class="fab fa-whatsapp"></i> Support</a>
+                <a href="https://wa.me/919455265412" class="secondary-btn"><i class="fab fa-whatsapp"></i> Official Support</a>
             </div>
         </div>
     </header>
 
+    <div class="partners-bar">
+        <span class="partner-logo"><i class="fas fa-play-circle"></i> TANGO LIVE</span>
+        <span class="partner-logo"><i class="fas fa-video"></i> BIGO LIVE</span>
+        <span class="partner-logo"><i class="fas fa-star"></i> MICO</span>
+        <span class="partner-logo"><i class="fas fa-shield-alt"></i> VERIFIED AGENCY</span>
+    </div>
+
+    <!-- Leaderboard / Earnings Section -->
     <section id="hall-of-fame" class="leaderboard-section">
         <h2 class="section-title">Hall of Fame</h2>
+        <p class="section-subtitle">A glimpse at our top creators' monthly performance. You could be next.</p>
         <div class="leaderboard-card">
-            <div class="leaderboard-row"><div class="rank-gold">#1</div><div><strong>Star_Angel_99</strong></div><div class="diamonds">3.4M Diamonds</div></div>
-            <div class="leaderboard-row"><div class="rank-silver">#2</div><div><strong>Queen_Streaming</strong></div><div class="diamonds">2.1M Diamonds</div></div>
-            <div class="leaderboard-row" style="border:none;"><div class="rank-bronze">#3</div><div><strong>Vlogger_King</strong></div><div class="diamonds">1.8M Diamonds</div></div>
+            <div class="leaderboard-row">
+                <div class="rank-gold">#1</div>
+                <div><strong>Star_Angel_99</strong></div>
+                <div style="color: var(--accent);">3.4M Diamonds</div>
+            </div>
+            <div class="leaderboard-row">
+                <div class="rank-silver">#2</div>
+                <div><strong>Queen_Streaming</strong></div>
+                <div style="color: var(--accent);">2.1M Diamonds</div>
+            </div>
+            <div class="leaderboard-row">
+                <div class="rank-bronze">#3</div>
+                <div><strong>Vlogger_King</strong></div>
+                <div style="color: var(--accent);">1.8M Diamonds</div>
+            </div>
+            <div class="leaderboard-row">
+                <div>#4</div>
+                <div><strong>LiveMaster_India</strong></div>
+                <div style="color: var(--accent);">1.2M Diamonds</div>
+            </div>
+            <div class="leaderboard-row" style="border: none;">
+                <div>#5</div>
+                <div><strong>Dancing_Diva</strong></div>
+                <div style="color: var(--accent);">950K Diamonds</div>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top: 2rem; opacity: 0.6; font-size: 0.9rem;">*Actual earnings depend on content quality and engagement.</p>
+    </section>
+
+    <!-- Agency About/Values Section -->
+    <section id="about" class="about-section">
+        <h2 class="section-title">Why We Are Different</h2>
+        <p class="section-subtitle">We don't just manage accounts; we build careers and financial independence.</p>
+        <div class="values-grid">
+            <div class="value-item">
+                <i class="fas fa-handshake"></i>
+                <h4>Absolute Trust</h4>
+                <p>Transparent diamond accounting and on-time payouts, always.</p>
+            </div>
+            <div class="value-item">
+                <i class="fas fa-heart"></i>
+                <h4>Unwavering Respect</h4>
+                <p>We treat every broadcaster as a professional partner, not just a number.</p>
+            </div>
+            <div class="value-item">
+                <i class="fas fa-user-shield"></i>
+                <h4>Official Protection</h4>
+                <p>Direct mediation with Tango support for account recovery and ban protection.</p>
+            </div>
         </div>
     </section>
 
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <h2 class="section-title">Our Journey</h2>
+        <p class="section-subtitle">From a small startup to India's leading agency network.</p>
+        <div class="timeline">
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2020</h3>
+                    <p>Team Galaxy founded with just 10 creators.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2022</h3>
+                    <p>Officially recognized as a Platinum Partner by Tango Live.</p>
+                </div>
+            </div>
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>2024</h3>
+                    <p>Expanded to 500+ creators and crossed 10M diamonds monthly.</p>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>2026</h3>
+                    <p>Launched Global Support & AI-driven Content Training.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perks Section -->
     <section id="perks" class="perks-section">
-        <h2 class="section-title">Agency Benefits</h2>
+        <h2 class="section-title">Exclusive Agency Benefits</h2>
+        <p class="section-subtitle">Maximize your potential with our specialized support system.</p>
         <div class="perks-grid">
-            <div class="perk-card"><h3><i class="fas fa-chart-line"></i> Priority Visibility</h3><p>Higher placement on Discovery tabs for instant reaching.</p></div>
-            <div class="perk-card"><h3><i class="fas fa-gem"></i> Exchange Bonuses</h3><p>Access exclusive 10-20% extra value on diamonds.</p></div>
-            <div class="perk-card"><h3><i class="fas fa-ban"></i> Anti-Ban Guard</h3><p>Direct mediation with Tango HQ to resolve account flags.</p></div>
+            <div class="perk-card">
+                <h3><i class="fas fa-chart-line"></i> Priority Visibility</h3>
+                <p>Agency-registered creators get higher placement on Discovery tabs, reaching more gifters instantly.</p>
+            </div>
+            <div class="perk-card">
+                <h3><i class="fas fa-gem"></i> Exchange Bonuses</h3>
+                <p>Access exclusive exchange festivals that give you 10-20% extra value on your diamonds.</p>
+            </div>
+            <div class="perk-card">
+                <h3><i class="fas fa-headset"></i> 24/7 Dedicated Manager</h3>
+                <p>Get a personal mentor for lighting, camera angles, and high-conversion content strategies.</p>
+            </div>
+            <div class="perk-card">
+                <h3><i class="fas fa-ban"></i> Anti-Ban Guard</h3>
+                <p>Direct line to Tango headquarters to instantly appeal and resolve any accidental account flags.</p>
+            </div>
+            <div class="perk-card">
+                <h3><i class="fas fa-trophy"></i> Exclusive Tournaments</h3>
+                <p>Join private agency battles with massive prize pools unavailable to the general public.</p>
+            </div>
+            <div class="perk-card">
+                <h3><i class="fas fa-graduation-cap"></i> Content Workshop</h3>
+                <p>Free weekly training on how to handle "toxic" gifters and turn them into loyal fans.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="steps-section">
+        <h2 class="section-title">Start Your Journey</h2>
+        <p class="section-subtitle">The simple 4-step process to becoming an official creator.</p>
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h4>Apply</h4>
+                <p>Fill out the form below with your Tango ID and contact details.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h4>Verify</h4>
+                <p>Our manager will verify your profile and provide 1-on-1 orientation.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h4>Go Live</h4>
+                <p>Start your first stream with agency-level traffic and visibility boosts.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <h4>Get Paid</h4>
+                <p>Receive your earnings directly with official agency bonuses added.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <h2 class="section-title">Creator Testimonials</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"My monthly diamond earnings tripled in just 2 months. The traffic support is real!"</p>
+                <div class="creator-info">
+                    <div class="creator-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div><strong>Priya Sharma</strong><br><small>Platinum Creator</small></div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p>"The management here is amazing. They fixed my ban in less than an hour. Truly professional."</p>
+                <div class="creator-info">
+                    <div class="creator-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div><strong>Rahul Verma</strong><br><small>Elite Broadcaster</small></div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Best agency for beginners. They taught me everything from lighting to gift conversion."</p>
+                <div class="creator-info">
+                    <div class="creator-avatar"><i class="fas fa-user-circle"></i></div>
+                    <div><strong>Anjali K.</strong><br><small>Rising Star</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-bar">
+        <div class="stat-item"><h2>500+</h2><p>Active Streamers</p></div>
+        <div class="stat-item"><h2>₹50L+</h2><p>Monthly Payouts</p></div>
+        <div class="stat-item"><h2>24/7</h2><p>Official Support</p></div>
+        <div class="stat-item"><h2>98%</h2><p>Success Rate</p></div>
+    </div>
+
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <div class="faq-question">What are the requirements to join? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">You need a smartphone, a stable internet connection, and a positive attitude. No professional equipment is required to start.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is it free to join? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Yes, we never charge our creators. We earn only when you succeed through official Tango platform bonuses.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I get paid? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Payouts are sent via your preferred method (Bank Transfer, UPI, or Payoneer) as per the official Tango schedule.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">I'm shy, can I still stream? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Absolutely! Many of our top earners started shy. Our managers provide scripts and engagement tips to build your confidence.</div>
+            </div>
         </div>
     </section>
 
     <section id="register" class="section">
         <div class="form-wrapper">
             <h2>Apply Today</h2>
+            <p style="text-align: center; margin-top: -1.5rem; margin-bottom: 2rem; opacity: 0.7;">Official Team Galaxy Recruitment Portal</p>
             <form id="regForm">
                 <input type="text" id="name" placeholder="Full Name" required>
                 <input type="text" id="handle" placeholder="Tango ID / Username" required>
@@ -70,9 +267,10 @@
 
     <footer>
         <div class="footer-content">
-            <h2 class="logo">TEAM GALAXY</h2>
+            <h2 class="logo" style="margin-bottom: 1.5rem;">TEAM GALAXY</h2>
             <p>Official Partner: Tango Live, Bigo, Mico</p>
-            <p>&copy; 2026 Team Galaxy Agency</p>
+            <p>Email: livestreamingmedia475@gmail.com</p>
+            <p>&copy; 2026 Team Galaxy Agency • WhatsApp Official Support</p>
         </div>
     </footer>
 
