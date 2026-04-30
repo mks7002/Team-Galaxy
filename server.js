@@ -8,14 +8,22 @@ require('dotenv').config();
 const app = express();
 app.use(express.json());
 
-// FIXED: Since your files are in the root directory on GitHub, 
-// we serve static files from __dirname (the root).
+// Serving static files from the root directory
 app.use(express.static(__dirname));
 
-// Database Connection
+// Database Connection with improved error logging
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false }
+});
+
+// Test Database Connection immediately on startup
+pool.connect((err, client, release) => {
+    if (err) {
+        return console.error('❌ Database connection failed:', err.stack);
+    }
+    console.log('✅ Connected to PostgreSQL successfully');
+    release();
 });
 
 // Create Table if not exists
@@ -31,7 +39,10 @@ const initDB = async () => {
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
         `);
-    } catch (err) { console.error("DB Init Error:", err); }
+        console.log("✅ Database Table initialized");
+    } catch (err) { 
+        console.error("❌ DB Init Error:", err.message); 
+    }
 };
 initDB();
 
@@ -45,7 +56,8 @@ app.post('/api/register', async (req, res) => {
         );
         res.status(200).json({ message: "Success" });
     } catch (err) {
-        res.status(500).json({ error: "Server Error" });
+        console.error("❌ Registration API Error:", err.message);
+        res.status(500).json({ error: "Server Error", details: err.message });
     }
 });
 
@@ -62,6 +74,8 @@ app.post('/api/admin/login', (req, res) => {
 // API: Get Data (Protected)
 app.get('/api/admin/data', async (req, res) => {
     const token = req.headers.authorization;
+    if (!token) return res.status(403).json({ error: "No token provided" });
+
     try {
         jwt.verify(token, process.env.JWT_SECRET);
         const result = await pool.query('SELECT * FROM streamers ORDER BY id DESC');
@@ -71,15 +85,16 @@ app.get('/api/admin/data', async (req, res) => {
     }
 });
 
-// FIXED: Catch-all route to serve index.html from the root directory
+// FIXED: Improved Catch-all route
+// We check for index.html first. If it's not found, we send a 404.
 app.get('*', (req, res) => {
     const indexPath = path.join(__dirname, 'index.html');
     if (fs.existsSync(indexPath)) {
         res.sendFile(indexPath);
     } else {
-        res.status(404).send("File index.html not found in root directory.");
+        res.status(404).send("Error 404: Frontend files (index.html) not found in the root directory.");
     }
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
