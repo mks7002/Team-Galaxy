@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Team Galaxy | Admin Portal</title>
+    <style>
+        body { font-family: 'Inter', sans-serif; background: #020617; color: #f8fafc; padding: 40px; margin: 0; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        table { width: 100%; border-collapse: collapse; background: #0f172a; border-radius: 12px; overflow: hidden; }
+        th, td { padding: 15px 20px; text-align: left; border-bottom: 1px solid #1e293b; }
+        th { background: #1e293b; color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        tr:hover { background: #1e293b; }
+        .login-card { max-width: 400px; margin: 150px auto; background: #0f172a; padding: 40px; border-radius: 20px; border: 1px solid #1e293b; text-align: center; }
+        input { width: 100%; padding: 12px; margin-bottom: 15px; background: #020617; border: 1px solid #334155; color: white; border-radius: 8px; }
+        button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: bold; }
+        .badge { background: #10b98122; color: #10b981; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loginSection">
+            <div class="login-card">
+                <h2 style="margin-top:0">Team Galaxy Admin</h2>
+                <p style="color:#94a3b8; margin-bottom:30px">Secure login to view streamers</p>
+                <input type="text" id="user" placeholder="Username">
+                <input type="password" id="pass" placeholder="Password">
+                <button onclick="login()">Enter Dashboard</button>
+            </div>
+        </div>
+
+        <div id="dashboard" style="display:none;">
+            <div class="header">
+                <h1>Streamer Registrations</h1>
+                <button onclick="logout()" style="width:auto; background:#ef4444">Logout</button>
+            </div>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Platform ID</th>
+                        <th>Email</th>
+                        <th>WhatsApp</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function logout() { localStorage.removeItem('token'); location.reload(); }
+
+        async function login() {
+            const username = document.getElementById('user').value;
+            const password = document.getElementById('pass').value;
+            const res = await fetch('/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+                showDashboard();
+            } else { alert("Invalid Admin Credentials"); }
+        }
+
+        async function showDashboard() {
+            const token = localStorage.getItem('token');
+            if(!token) return;
+
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            
+            const res = await fetch('/api/admin/data', {
+                headers: { 'Authorization': token }
+            });
+            if(res.status === 403) { logout(); return; }
+            
+            const streamers = await res.json();
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            streamers.forEach(s => {
+                const date = new Date(s.created_at).toLocaleDateString();
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${date}</td>
+                        <td style="font-weight:600">${s.name}</td>
+                        <td><code style="color:#a855f7">${s.handle}</code></td>
+                        <td>${s.email}</td>
+                        <td><a href="https://wa.me/${s.phone}" style="color:#3b82f6; text-decoration:none" target="_blank">${s.phone}</a></td>
+                        <td><span class="badge">New Lead</span></td>
+                    </tr>
+                `;
+            });
+        }
+        if(localStorage.getItem('token')) showDashboard();
+    </script>
+</body>
+</html>
