@@ -6,6 +6,8 @@ require('dotenv').config();
 
 const app = express();
 app.use(express.json());
+
+// 1. Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Database Connection
@@ -65,6 +67,13 @@ app.get('/api/admin/data', async (req, res) => {
     } catch (err) {
         res.status(403).json({ error: "Unauthorized" });
     }
+});
+
+// 2. CATCH-ALL ROUTE
+// This ensures that any request that doesn't match an API route 
+// will serve the index.html file from your public folder.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const PORT = process.env.PORT || 3000;
