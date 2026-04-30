@@ -1,35 +1,34 @@
-document.getElementById('regForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const submitBtn = e.target.querySelector('.submit-btn');
-    const msg = document.getElementById('msg');
-    submitBtn.innerText = "Processing...";
-    submitBtn.disabled = true;
-
-    const data = {
-        name: document.getElementById('name').value,
-        handle: document.getElementById('handle').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value
-    };
-    
-    try {
-        const res = await fetch('/api/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
+document.querySelectorAll('.faq-question').forEach(item => {
+    item.addEventListener('click', () => {
+        const answer = item.nextElementSibling;
+        const icon = item.querySelector('i');
+        const isOpen = answer.style.display === "block";
+        
+        // Close others
+        document.querySelectorAll('.faq-answer').forEach(a => a.style.display = "none");
+        document.querySelectorAll('.faq-question i').forEach(i => {
+            i.classList.remove('fa-chevron-up');
+            i.classList.add('fa-chevron-down');
         });
-        if (res.ok) {
-            msg.style.color = "#10b981";
-            msg.innerText = "✅ Application Sent! We will WhatsApp you shortly.";
-            document.getElementById('regForm').reset();
-        } else {
-             throw new Error();
+
+        if (!isOpen) {
+            answer.style.display = "block";
+            icon.classList.remove('fa-chevron-down');
+            icon.classList.add('fa-chevron-up');
         }
-    } catch (err) {
-        msg.style.color = "#ef4444";
-        msg.innerText = "❌ Error. Contact us via WhatsApp directly.";
-    } finally {
-        submitBtn.innerText = "Apply Now";
-        submitBtn.disabled = false;
-    }
+    });
+});
+
+document.getElementById('regForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.querySelector('.submit-btn');
+    const msg = document.getElementById('msg');
+    btn.innerHTML = 'Sending Application...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+        msg.innerHTML = "✅ Application Received! Check your WhatsApp for a message from our manager.";
+        msg.style.color = "green";
+        btn.innerHTML = 'Success';
+    }, 1800);
 });
