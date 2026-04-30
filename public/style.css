@@ -237,17 +237,17 @@ nav {
 .rank-silver { color: #c0c0c0; font-weight: 800; }
 .rank-bronze { color: #cd7f32; font-weight: 800; }
 
+/* --- Perks Section --- */
+.perks-section {
+    padding: 80px 10%;
     max-width: 1400px;
     margin: 0 auto;
 }
 .perks-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
+    gap: 2rem;
+
 .perk-card {
     background: var(--glass);
     border-radius: 20px;
@@ -373,15 +373,15 @@ nav {
 }
 
 /* --- Testimonials --- */
+.testimonials {
+    padding: 80px 10%;
     max-width: 1400px;
     margin: 0 auto;
 }
 .testimonial-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5y: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
 }
 .testimonial-card {
     background: var(--glass);
@@ -404,13 +404,13 @@ nav {
     gap: 1rem; 
     margin-top: auto;
 }
-    max-width: 1000px;
-    margin: 0 auto;
 .creator-avatar { width: 50px; height: 50px; border-radius: 50%; background: #444; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
 
 /* --- FAQ --- */
 .faq-section {
     padding: 80px 10%;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 .faq-item {
     background: var(--glass);
@@ -473,6 +473,12 @@ nav {
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.section {
+    padding: 80px 10%;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .form-wrapper {
