@@ -1,6 +1,7 @@
 document.getElementById('regForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     const submitBtn = e.target.querySelector('.submit-btn');
+    const msg = document.getElementById('msg');
     submitBtn.innerText = "Processing...";
     submitBtn.disabled = true;
 
@@ -18,17 +19,17 @@ document.getElementById('regForm').addEventListener('submit', async (e) => {
             body: JSON.stringify(data)
         });
         if (res.ok) {
-            document.getElementById('msg').style.color = "#10b981";
-            document.getElementById('msg').innerText = "Application Sent Successfully! Team Galaxy will call you shortly.";
+            msg.style.color = "#10b981";
+            msg.innerText = "✅ Application Sent! We will WhatsApp you shortly.";
             document.getElementById('regForm').reset();
         } else {
              throw new Error();
         }
     } catch (err) {
-        document.getElementById('msg').style.color = "#ef4444";
-        document.getElementById('msg').innerText = "Error. Please try again or contact via WhatsApp.";
+        msg.style.color = "#ef4444";
+        msg.innerText = "❌ Error. Contact us via WhatsApp directly.";
     } finally {
-        submitBtn.innerText = "Apply to Team Galaxy";
+        submitBtn.innerText = "Apply Now";
         submitBtn.disabled = false;
     }
 });
