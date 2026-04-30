@@ -2,13 +2,15 @@ const express = require('express');
 const { Pool } = require('pg');
 const jwt = require('jsonwebtoken');
 const path = require('path');
+const fs = require('fs');
 require('dotenv').config();
 
 const app = express();
 app.use(express.json());
 
-// 1. Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
+// FIXED: Since your files are in the root directory on GitHub, 
+// we serve static files from __dirname (the root).
+app.use(express.static(__dirname));
 
 // Database Connection
 const pool = new Pool({
@@ -69,11 +71,14 @@ app.get('/api/admin/data', async (req, res) => {
     }
 });
 
-// 2. CATCH-ALL ROUTE
-// This ensures that any request that doesn't match an API route 
-// will serve the index.html file from your public folder.
+// FIXED: Catch-all route to serve index.html from the root directory
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    const indexPath = path.join(__dirname, 'index.html');
+    if (fs.existsSync(indexPath)) {
+        res.sendFile(indexPath);
+    } else {
+        res.status(404).send("File index.html not found in root directory.");
+    }
 });
 
 const PORT = process.env.PORT || 3000;
