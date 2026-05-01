@@ -1,3 +1,34 @@
+// ===== MOBILE MENU TOGGLE =====
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    });
+    
+    // Close menu when a link is clicked
+    const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const isClickInsideMenu = mobileMenu.contains(event.target);
+        const isClickOnToggle = menuToggle.contains(event.target);
+        
+        if (!isClickInsideMenu && !isClickOnToggle && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+    });
+}
+
 // ===== FAQ FUNCTIONALITY =====
 document.querySelectorAll('.faq-question').forEach(item => {
     item.addEventListener('click', function() {
